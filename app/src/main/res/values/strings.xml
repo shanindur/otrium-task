@@ -4,4 +4,6 @@
     <string name="profile">Profile</string>
     <string name="view_all"><u>View all</u></string>
     <string name="pinned">Planned</string>
+    <string name="top_repositories">Top repositories</string>
+    <string name="starred_repositories">Starred repositories</string>
 </resources>

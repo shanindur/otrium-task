@@ -1,5 +1,7 @@
 package com.shanindu.github.app.ui.main
 
+import com.shanindu.github.app.models.Repo
+import com.shanindu.github.app.models.User
 import com.shanindu.github.app.ui.base.BaseContract
 
 /**
@@ -7,10 +9,15 @@ import com.shanindu.github.app.ui.base.BaseContract
  */
 class MainContract {
 
-    interface View: BaseContract.View {
-
+    interface View : BaseContract.View {
+        fun showProgress(show: Boolean)
+        fun showUserData(user: User)
+        fun showPinnedRepos(repo: List<Repo>)
+        fun showErrorMessage(error: String)
     }
 
-    interface Presenter: BaseContract.Presenter<View> {
+    interface Presenter : BaseContract.Presenter<View> {
+        fun loadUserData()
+        fun loadPinnedRepos()
     }
 }
