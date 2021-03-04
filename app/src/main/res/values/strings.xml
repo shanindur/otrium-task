@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">GitHub</string>
+
+    <string name="profile">Profile</string>
+    <string name="view_all"><u>View all</u></string>
+    <string name="pinned">Planned</string>
+</resources>
