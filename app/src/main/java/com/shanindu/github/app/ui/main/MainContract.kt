@@ -13,6 +13,8 @@ class MainContract {
         fun showProgress(show: Boolean)
         fun showUserData(user: User)
         fun showPinnedRepos(repo: List<Repo>)
+        fun showTopRepos(repo: List<Repo>)
+        fun showStarredRepos(repo: List<Repo>)
         fun showErrorMessage(error: String)
     }
 

@@ -2,6 +2,7 @@ package com.shanindu.github.app.ui.main
 
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
+import android.support.v7.widget.LinearLayoutManager
 import android.view.Menu
 import android.view.View
 import com.shanindu.github.app.R
@@ -78,7 +79,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         Picasso
                 .get()
                 .load(user.avatar_url)
-                .into(imageViewAvatar);
+                .into(imageViewAvatar)
     }
 
     override fun showPinnedRepos(repo: List<Repo>) {
@@ -110,6 +111,26 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         Picasso.get()
                 .load(repo[2].owner.avatar_url)
                 .into(imageViewAvatar3);
+    }
+
+    override fun showTopRepos(list: List<Repo>) {
+
+        val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        val layoutManager2 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
+        recyclerViewTop!!.setLayoutManager(layoutManager)
+        var adapter = MainAdapter(this, list.toMutableList())
+        recyclerViewTop!!.setAdapter(adapter)
+
+        recyclerViewStarred!!.setLayoutManager(layoutManager2)
+        var adapter2 = MainAdapter(this, list.toMutableList())
+        recyclerViewStarred!!.setAdapter(adapter2)
+
+        adapter.notifyDataSetChanged()
+        adapter2.notifyDataSetChanged()
+    }
+
+    override fun showStarredRepos(repo: List<Repo>) {
+        TODO("Not yet implemented")
     }
 
     override fun showErrorMessage(error: String) {

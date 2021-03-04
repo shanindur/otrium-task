@@ -51,6 +51,7 @@ class MainPresenter : MainContract.Presenter {
                 .subscribe({ list: List<Repo>? ->
                     view.showProgress(false)
                     view.showPinnedRepos(list!!.take(3))
+                    view.showTopRepos(list!!.take(10))
                 }, { error ->
                     view.showProgress(false)
                     view.showErrorMessage(error.localizedMessage)
