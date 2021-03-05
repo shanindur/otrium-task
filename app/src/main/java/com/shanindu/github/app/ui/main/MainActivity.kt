@@ -40,6 +40,7 @@ class MainActivity : AppCompatActivity(), MainContract.View {
         showProgress(true)
         presenter.loadUserData()
         presenter.loadPinnedRepos()
+        presenter.loadStarredRepos()
     }
 
 
@@ -114,23 +115,22 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     override fun showTopRepos(list: List<Repo>) {
-
         val layoutManager = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
-        val layoutManager2 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
         recyclerViewTop!!.setLayoutManager(layoutManager)
         var adapter = MainAdapter(this, list.toMutableList())
         recyclerViewTop!!.setAdapter(adapter)
+
+        adapter.notifyDataSetChanged()
+    }
+
+    override fun showStarredRepos(list: List<Repo>) {
+        val layoutManager2 = LinearLayoutManager(this, LinearLayoutManager.HORIZONTAL, false)
 
         recyclerViewStarred!!.setLayoutManager(layoutManager2)
         var adapter2 = MainAdapter(this, list.toMutableList())
         recyclerViewStarred!!.setAdapter(adapter2)
 
-        adapter.notifyDataSetChanged()
         adapter2.notifyDataSetChanged()
-    }
-
-    override fun showStarredRepos(repo: List<Repo>) {
-        TODO("Not yet implemented")
     }
 
     override fun showErrorMessage(error: String) {

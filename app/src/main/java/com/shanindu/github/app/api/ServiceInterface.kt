@@ -20,6 +20,9 @@ interface ServiceInterface {
     @GET("users/shanindur/repos")
     fun getPinnedRepos(): Observable<List<Repo>>
 
+    @GET("users/shanindur/starred")
+    fun getStarredRepos(): Observable<List<Repo>>
+
     companion object Factory {
         fun create(): ServiceInterface {
             val retrofit = retrofit2.Retrofit.Builder()

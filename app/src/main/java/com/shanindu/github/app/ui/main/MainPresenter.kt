@@ -60,4 +60,18 @@ class MainPresenter : MainContract.Presenter {
         subscriptions.add(subscribe)
     }
 
+    override fun loadStarredRepos() {
+        var subscribe = api.getStarredRepos().subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread())
+                .subscribe({ list: List<Repo>? ->
+                    view.showProgress(false)
+                    view.showStarredRepos(list!!.take(10))
+                }, { error ->
+                    view.showProgress(false)
+                    view.showErrorMessage(error.localizedMessage)
+                })
+
+        subscriptions.add(subscribe)
+    }
+
 }

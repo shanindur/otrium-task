@@ -21,5 +21,6 @@ class MainContract {
     interface Presenter : BaseContract.Presenter<View> {
         fun loadUserData()
         fun loadPinnedRepos()
+        fun loadStarredRepos()
     }
 }
