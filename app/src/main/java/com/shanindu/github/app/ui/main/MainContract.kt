@@ -7,7 +7,7 @@ import com.shanindu.github.app.ui.base.BaseContract
 /**
  * Created by Shanindu on 03/03/2021.
  */
-class MainContract {
+interface MainContract {
 
     interface View : BaseContract.View {
         fun showProgress(show: Boolean)
