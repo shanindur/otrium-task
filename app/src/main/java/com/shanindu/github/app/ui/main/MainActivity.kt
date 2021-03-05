@@ -37,6 +37,16 @@ class MainActivity : AppCompatActivity(), MainContract.View {
     }
 
     private fun init() {
+
+        loadAllData()
+        swipeRefreshLayout.setOnRefreshListener {
+            loadAllData()
+        }
+
+    }
+
+    private fun loadAllData() {
+        swipeRefreshLayout.isRefreshing = false
         showProgress(true)
         presenter.loadUserData()
         presenter.loadPinnedRepos()
